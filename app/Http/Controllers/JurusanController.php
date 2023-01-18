@@ -64,6 +64,10 @@ class JurusanController extends Controller
      */
     public function edit(Jurusan $jurusan)
     {
+        $kelas = Kelas::where('jurusan_id', $jurusan->id)->first();
+        if ($kelas) {
+            return back()->with('error', "$jurusan->nama_jurusan masih di gunakan di menu Kelas");
+        }
         return view('jurusan.edit', [
             'jurusan' => $jurusan
         ]);
@@ -83,7 +87,7 @@ class JurusanController extends Controller
         ]);
 
         $jurusan->update($data_jurusan);
-        return redirect('/jurusan/index')->with('success', 'Data Jurusan Berhasil diEdit');
+        return redirect('/jurusan/index')->with('success', 'Data Jurusan Berhasil Diedit');
     }
 
     /**
@@ -96,10 +100,10 @@ class JurusanController extends Controller
     {
         $kelas = Kelas::where('jurusan_id', $jurusan->id)->first();
         if ($kelas) {
-            return back()->with('error', '$jurusan->nama_jurusan masih di gunakan di menu kelas');
+            return back()->with('error', "$jurusan->nama_jurusan masih di gunakan di menu Kelas");
         }
 
         $jurusan->delete();
-        return back()->with('success', 'Data Berhasil di Hapus');
+        return back()->with('success', 'Data Berhasil Dihapus');
     }
 }

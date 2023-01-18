@@ -2,8 +2,15 @@
 @section('content')
     <center>
         <b>
-            <h2>List Nama Kelas</h2>
+            <h2>LIST NAMA KELAS</h2>
             <a href="/kelas/create" class="button-primary">Tambah Nama Kelas</a>
+            @if (session('success'))
+                <p class="text-success">{{ session('success') }}</p>
+            @endif
+            @if(session('error'))
+                <p class="text-danger">{{ session('error') }}</p>
+            @endif
+            
             <table>
                 <tr>
                     <th>No</th>
@@ -18,8 +25,7 @@
                         <td>{{ $k->jurusan->nama_jurusan }}</td>
                         <td>
                             <a href="/kelas/edit/{{ $k->id }}" class="button-warning">Edit</a>
-                            <a href="/kelas/hapus/{{ $k->id }}" class="button-danger" onclick="return
-                                confirm('Yakin Hapus?')">Hapus</a>
+                            <a href="/kelas/destroy/{{ $k->id }}" class="button-danger" onclick="return confirm('Yakin Hapus?')">Hapus</a>
                         </td>
                     </tr>
                 @endforeach

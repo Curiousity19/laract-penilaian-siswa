@@ -8,7 +8,7 @@
                 <table width="50%">
                     <tr>
                         <td class="bar">Kelas</td>
-                        <td><input type="text" name="nama_kelas"></td>
+                        <td class="bar"><input type="text" name="nama_kelas"></td>
                     </tr>
                     <tr>
                         <td class="bar">Jurusan</td>

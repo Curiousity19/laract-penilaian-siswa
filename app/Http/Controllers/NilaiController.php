@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mapel;
-use App\Models\Mengajar;
+use App\Models\Nilai;
 use Illuminate\Http\Request;
 
-class MapelController extends Controller
+class NilaiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,8 @@ class MapelController extends Controller
      */
     public function index()
     {
-        return view('mapel.index', [
-            'mapel' => Mapel::all()
+        return view('nilai.index', [
+            'nilai' => Nilai::all(),
         ]);
     }
 
@@ -27,7 +26,7 @@ class MapelController extends Controller
      */
     public function create()
     {
-        return view('mapel.create');
+        //
     }
 
     /**
@@ -38,11 +37,7 @@ class MapelController extends Controller
      */
     public function store(Request $request)
     {
-        $data_mapel = $request->validate([
-            'nama_mapel' => 'required'
-        ]);
-        Mapel::create($data_mapel);
-        return redirect('/mapel/index')->with('success', 'Data Berhasil Ditambah');
+        //
     }
 
     /**
@@ -62,11 +57,9 @@ class MapelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mapel $mapel)
+    public function edit($id)
     {
-        return view('mapel.edit', [
-            'mapel' => $mapel
-        ]);
+        //
     }
 
     /**
@@ -76,13 +69,9 @@ class MapelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mapel $mapel)
+    public function update(Request $request, $id)
     {
-        $data_mapel = $request->validate([
-            'nama_mapel' => 'required'
-        ]);
-        $mapel->update($data_mapel);
-        return redirect('/mapel/index')->with('success', 'Data Berhasil Diubah');
+        //
     }
 
     /**
@@ -91,14 +80,8 @@ class MapelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mapel $mapel)
+    public function destroy($id)
     {
-        $mengajar = Mengajar::where('mapel_id', $mapel->mapel_id)->first();
-
-        if ($mengajar) {
-            return back()->with('error', '$mapel->nama_mapel masih digunakan di menu MENGAJAR');
-        }
-        $mapel->delete();
-        return back()->with('success', 'Data Berhasil Dihapus');
+        //
     }
 }

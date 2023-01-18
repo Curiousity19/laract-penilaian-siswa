@@ -208,4 +208,5 @@ body {
 
   td.bar {
     width: 25%;
+    /* text-align: center; */
   }

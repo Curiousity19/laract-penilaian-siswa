@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Siswa;
 use App\Models\Kelas;
 use App\Models\Jurusan;
 
@@ -96,8 +97,14 @@ class KelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Kelas $kelas)
     {
-        //
+        $siswa = Siswa::where('kelas_id', $kelas->id)->first(); 
+        if ($siswa) {
+            return back()->with('error', $kelas->nama_kelas." ".$kelas->jurusan->nama_jurusan." Masih digunakan di menu SISWA");
+        }
+
+        $kelas->delete();
+        return back()->with('success', 'Data berhasil Dihapus');
     }
 }

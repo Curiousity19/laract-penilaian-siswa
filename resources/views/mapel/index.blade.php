@@ -4,7 +4,13 @@
         <b>
             <h2>LIST DATA MAPEL</h2>
             <a href="/mapel/create" class="button-primary">TAMBAH MAPEL</a>
-
+            @if (session('success'))
+                <p class="text-success">{{ session('success') }}</p>                
+            @endif
+            @if (session('error'))
+                <p class="text-danger">{{ session('error') }}</p>                
+            @endif
+            
             <table>
                 <tr>
                     <th>NO</th>
