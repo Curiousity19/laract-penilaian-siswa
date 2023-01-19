@@ -87,7 +87,7 @@ Route::prefix('nilai')->group(function () {
     Route::get('/create', [NilaiController::class, 'create']);
     Route::post('/store', [NilaiController::class, 'store']);
     Route::get('/edit/{nilai}', [NilaiController::class, 'edit']);
-    Route::get('/update/{nilai}', [NilaiController::class, 'update']);
+    Route::post('/update/{nilai}', [NilaiController::class, 'update']);
     Route::get('/destroy/{nilai}', [NilaiController::class, 'destroy']);
 });
 
